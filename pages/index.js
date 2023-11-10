@@ -1,9 +1,21 @@
 import { fetchCountries } from "@/api";
+import CountryList from "@/components/CountryList";
+import Searchbar from "@/components/Searchbar";
+import Head from "next/head";
 
 export default function Home({countries}) {
-  return <div>
-    {countries.map((country) => <div key={country.code}>{country.commonName}</div>)}
-    </div>;
+  return (
+    <>
+      <Head>
+        <title>NARAS</title>
+        <meta property="og:image" content="/thumnail.png"/>
+        <meta property="og:title" content="NARAS"/>
+        <meta property="og:description" content="전 세계 국가들의 정보를 확인해보세요."/>
+      </Head>
+      <Searchbar />
+      <CountryList countries={countries} />
+    </>
+    );
 }
 
 // SSG(Staric Site Generation) 방식으로 처리 하도록 정의 (비동기 방식) 
